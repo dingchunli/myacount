@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xgq.financialsys.mapping.ExpendMapper">
+  <resultMap id="BaseResultMap" type="cn.xgq.financialsys.domain.Expend">
+    <id column="expend_id" jdbcType="INTEGER" property="expendId" />
+    <result column="expend_type_id" jdbcType="INTEGER" property="expendTypeId" />
+    <result column="expend_use" jdbcType="VARCHAR" property="expendUse" />
+    <result column="pay_method" jdbcType="VARCHAR" property="payMethod" />
+    <result column="pay_account" jdbcType="VARCHAR" property="payAccount" />
+    <result column="expend_price" jdbcType="DOUBLE" property="expendPrice" />
+    <result column="expend_date" jdbcType="TIMESTAMP" property="expendDate" />
+    <result column="expend_user" jdbcType="VARCHAR" property="expendUser" />
+    <result column="expend_desc" jdbcType="VARCHAR" property="expendDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    expend_id, a.expend_type_id, expend_use, pay_method, pay_account, expend_price, expend_date,
+    expend_user, expend_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from expend a
+    where expend_id = #{expendId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from expend
+    where expend_id = #{expendId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xgq.financialsys.domain.Expend">
+    insert into expend (expend_id, expend_type_id, expend_use, 
+      pay_method, pay_account, expend_price, 
+      expend_date, expend_user, expend_desc
+      )
+    values (#{expendId,jdbcType=INTEGER}, #{expendTypeId,jdbcType=INTEGER}, #{expendUse,jdbcType=VARCHAR}, 
+      #{payMethod,jdbcType=VARCHAR}, #{payAccount,jdbcType=VARCHAR}, #{expendPrice,jdbcType=DOUBLE}, 
+      #{expendDate,jdbcType=TIMESTAMP}, #{expendUser,jdbcType=VARCHAR}, #{expendDesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xgq.financialsys.domain.Expend">
+    insert into expend
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="expendId != null">
+        expend_id,
+      </if>
+      <if test="expendTypeId != null">
+        expend_type_id,
+      </if>
+      <if test="expendUse != null">
+        expend_use,
+      </if>
+      <if test="payMethod != null">
+        pay_method,
+      </if>
+      <if test="payAccount != null">
+        pay_account,
+      </if>
+      <if test="expendPrice != null">
+        expend_price,
+      </if>
+      <if test="expendDate != null">
+        expend_date,
+      </if>
+      <if test="expendUser != null">
+        expend_user,
+      </if>
+      <if test="expendDesc != null">
+        expend_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="expendId != null">
+        #{expendId,jdbcType=INTEGER},
+      </if>
+      <if test="expendTypeId != null">
+        #{expendTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="expendUse != null">
+        #{expendUse,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null">
+        #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccount != null">
+        #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="expendPrice != null">
+        #{expendPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="expendDate != null">
+        #{expendDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expendUser != null">
+        #{expendUser,jdbcType=VARCHAR},
+      </if>
+      <if test="expendDesc != null">
+        #{expendDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xgq.financialsys.domain.Expend">
+    update expend
+    <set>
+      <if test="expendTypeId != null">
+        expend_type_id = #{expendTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="expendUse != null">
+        expend_use = #{expendUse,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null">
+        pay_method = #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccount != null">
+        pay_account = #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="expendPrice != null">
+        expend_price = #{expendPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="expendDate != null">
+        expend_date = #{expendDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expendUser != null">
+        expend_user = #{expendUser,jdbcType=VARCHAR},
+      </if>
+      <if test="expendDesc != null">
+        expend_desc = #{expendDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where expend_id = #{expendId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xgq.financialsys.domain.Expend">
+    update expend
+    set expend_type_id = #{expendTypeId,jdbcType=INTEGER},
+      expend_use = #{expendUse,jdbcType=VARCHAR},
+      pay_method = #{payMethod,jdbcType=VARCHAR},
+      pay_account = #{payAccount,jdbcType=VARCHAR},
+      expend_price = #{expendPrice,jdbcType=DOUBLE},
+      expend_date = #{expendDate,jdbcType=TIMESTAMP},
+      expend_user = #{expendUser,jdbcType=VARCHAR},
+      expend_desc = #{expendDesc,jdbcType=VARCHAR}
+    where expend_id = #{expendId,jdbcType=INTEGER}
+  </update>
+
+  <select id="findExpendCount" parameterType="java.util.Map" resultType="int">
+    select count(*)
+    from expend a right join expendtype b on a.expend_type_id=b.expend_type_id
+    RIGHT JOIN dictionary d on d.dcis_code='pay_method' and d.key_value=a.pay_method
+    <where>
+      <if test="minPrice != null">
+        <if test="maxPrice != null">
+          a.expend_price &lt; #{maxPrice} and a.expend_price &gt;  #{minPrice}
+        </if>
+      </if>
+      <if test="expendType !=null">
+        and a.expend_type_id = #{expendType}
+      </if>
+      <if test="expendUser !=null">
+        and a.expend_user = #{expendUser}
+      </if>
+    </where>
+  </select>
+
+  <select id="findExpendMap" parameterType="java.util.Map" resultType="java.util.HashMap">
+    select <include refid="Base_Column_List" />,b.enpend_type,d.key_name, DATE_FORMAT(a.expend_date,'%Y-%m-%d') as expend_date
+    from expend a right join expendtype b on a.expend_type_id=b.expend_type_id
+    RIGHT JOIN dictionary d on d.dcis_code='pay_method' and d.key_value=a.pay_method
+    <where>
+      <if test="minPrice != null">
+        <if test="maxPrice != null">
+          a.expend_price &lt; #{maxPrice} and expend_price &gt;  #{minPrice}
+        </if>
+      </if>
+      <if test="expendType !=null">
+        and a.expend_type_id = #{expendType}
+      </if>
+      <if test="expendUser !=null">
+        and a.expend_user = #{expendUser}
+      </if>
+    </where> order by a.expend_date desc
+    <if test="pageSize != null">
+      <if test="currentPage != null">
+        limit #{indexCount},#{pageSize}
+      </if>
+    </if>
+  </select>
+
+  <select id="findExpStatistics" parameterType="map" resultType="cn.xgq.financialsys.domain.vo.VoExpStics">
+    select expend_type_id as expendTypeId,expend_price as expendPrice,DATE_FORMAT(expend_date,'%Y-%m-%d') as expendDate
+    from expend
+    <where>
+      <if test="year != null">
+        DATE_FORMAT(expend_date,'%Y') = #{year}
+      </if>
+      <if test="mouth != null">
+       and DATE_FORMAT(expend_date,'%m') = #{mouth}
+      </if>
+      <if test="expendType !=null">
+        and expend_type_id = #{expendType}
+      </if>
+      <if test="expendUser !=null">
+        and expend_user = #{expendUser}
+      </if>
+    </where>
+  </select>
+
+  <select id="findVoExpPieChartList" parameterType="map" resultType="cn.xgq.financialsys.domain.vo.VoExpPieChart">
+    select a.enpend_type as expendType,b.expend_price as expendPrice from  expendtype a LEFT JOIN
+        (select expend_type_id,expend_price from expend where expend_user=#{expendUser}
+     and DATE_FORMAT(expend_date,'%Y-%m')= DATE_FORMAT(now(),'%Y-%m')) b on
+      a.expend_type_id=b.expend_type_id
+  </select>
+
+  <select id="findExpPrice"  parameterType="map" resultType="cn.xgq.financialsys.domain.vo.VoExpPrice">
+    SELECT * from
+               (SELECT SUM(expend_price) as totalExpPrice from expend
+                WHERE expend_user=#{expendUser} and DATE_FORMAT(expend_date,'%Y-%m')= DATE_FORMAT(now(),'%Y-%m')) a
+            ,
+               (SELECT SUM(expend_price) as joyExpPrice from expend
+                WHERE expend_user=#{expendUser} and DATE_FORMAT(expend_date,'%Y-%m')= DATE_FORMAT(now(),'%Y-%m') and expend_type_id in(4,8)) b
+            ,
+               (SELECT SUM(expend_price) as shopExpPrice from expend
+                WHERE expend_user=#{expendUser} and DATE_FORMAT(expend_date,'%Y-%m')= DATE_FORMAT(now(),'%Y-%m') and expend_type_id in(2,3)) c
+
+  </select>
+</mapper>

@@ -1,0 +1,194 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>个人信息</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">主页</a></li>
+                    <li class="breadcrumb-item active">用户信息界面</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+
+                <!-- Profile Image -->
+                <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center"><!--头像-->
+                            <img class="profile-user-img img-fluid img-circle"
+                                 src="/img/user4.jpg"
+                                 alt="User profile picture" id="headPic">
+                        </div>
+
+                        <h3 class="profile-username text-center" id="name">姓名</h3>
+
+                        <p class="text-muted text-center" id="username">用户名</p>
+
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                                <b>出生日期</b> <a class="float-right" id="born">XXX</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>家庭地址</b> <a class="float-right" id="address">XXX</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>性别</b> <a class="float-right" id="sex">XX</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">活动</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">完善个人信息</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#alertMes" data-toggle="tab">每月预警信息</a></li>
+                        </ul>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="activity">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            <i class="ion ion-clipboard mr-1"></i>
+                                            活动清单
+                                        </h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <ul class="todo-list" data-widget="todo-list" id="listBookMarks">
+                                        </ul>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer clearfix">
+                                        <button type="button" class="btn btn-info float-right" id="addList"><i class="fas fa-plus"></i> 书签记录</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+
+                            <div class="tab-pane" id="settings">
+                                <form class="form-horizontal" id="updatePerSonForm" enctype="multipart/form-data" method="post">
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">头像</label>
+                                        <div class="col-sm-10">
+                                            <img src="/img/user4.jpg" id="inputPicHead" width="128" height="128">
+                                            <input type="file" name="file" id="file"  style="opacity:0;width:18%;height:100%;position:absolute;top:0;left:0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">姓名</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="如：张三">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSex" class="col-sm-2 col-form-label">性别</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputSex" name="inputSex" placeholder="性别">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputNumber" class="col-sm-2 col-form-label">联系电话</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputNumber" name="inputNumber" placeholder="联系电话">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputAddress" class="col-sm-2 col-form-label">家庭地址</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" id="inputAddress" name="inputAddress"
+                                                      placeholder="家庭地址"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputBorn" class="col-sm-2 col-form-label">出生日期</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputBorn" name="inputBorn" placeholder="出生日期" readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <button type="submit" class="btn btn-danger" id="savePersonBtn">保存信息</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="alertMes">
+                                <form class="form-horizontal" id="updateForm">
+                                    <div class="form-group row">
+                                        <label for="mIncTotalPrice" class="col-sm-2 col-form-label">月总工资</label>
+                                        <div class="input-group col-sm-10">
+                                            <input class="form-control" id="mIncTotalPrice" name="mIncTotalPrice" type="text" placeholder="即：每月给自己的总收入">
+                                            <span class="input-group-addon">.00$</span>
+                                        </div>
+                                    </div>
+                                    <div class=" form-group row">
+                                        <label for="mExpMaxPrice" class="col-sm-2 col-form-label">月最大消费金额</label>
+                                        <div class=" input-group col-sm-10">
+                                            <input class="form-control" id="mExpMaxPrice" name="mExpMaxPrice" type="text" placeholder="即：月支出最大不可超过这个数额">
+                                            <span class="input-group-addon">.00$</span>
+                                        </div>
+                                    </div>
+                                    <div class= " form-group row">
+                                        <label for="mExpSuitPrice" class="col-sm-2 col-form-label">月常规消费金额</label>
+                                        <div class=" input-group col-sm-10">
+                                            <input class="form-control" id="mExpSuitPrice" name="mExpSuitPrice" type="text" placeholder="即：每月自己最好的消费金额">
+                                            <span class="input-group-addon">.00$</span>
+                                        </div>
+                                    </div>
+                                    <div class="  form-group row">
+                                        <label for="mExpJoyPrice" class="col-sm-2 col-form-label">月娱乐消费金额</label>
+                                        <div class="input-group col-sm-10">
+                                            <input class="form-control" id="mExpJoyPrice" name="mExpJoyPrice" type="text" placeholder="即：每月给自己娱乐消费的金额">
+                                            <span class="input-group-addon">.00$</span>
+                                        </div>
+                                    </div>
+                                    <div class=" form-group row">
+                                        <label for="mExpShopPrice" class="col-sm-2 col-form-label">月购物消费金额</label>
+                                        <div class="input-group col-sm-10">
+                                            <input class="form-control" id="mExpShopPrice" name="mExpShopPrice" type="text" placeholder="即：每月给自己购物消费的金额">
+                                            <span class="input-group-addon">.00$</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <button type="submit" class="btn btn-danger" id="updateSavaBtn">保存信息</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+<script src="/js/context/perInfo.js"></script>

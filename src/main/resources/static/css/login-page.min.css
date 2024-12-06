@@ -1,0 +1,101 @@
+.login-page {
+    background: #f9f9f9; /* 明亮的背景色 */
+}
+
+.captcha {
+    width: 120px;
+}
+
+.login-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 柔和阴影 */
+    background: url(../img/avatar.jpg) no-repeat center center;
+    background-size: cover;
+    margin: 40px auto;
+    transition: transform 0.5s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.login-avatar:hover {
+    transform: rotate(360deg); /* 保留旋转效果 */
+}
+
+.login-page .login-content {
+    position: relative;
+    width: 350px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px;
+    background: #ffffff; /* 白色背景 */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    transition: all 0.3s ease-in-out;
+}
+
+.login-page .login-content a {
+    color: #4c8bf5; /* 明亮的链接颜色 */
+    text-decoration: none;
+}
+
+.login-page .login-form {
+    position: relative;
+    padding-top: 20px;
+}
+
+.login-page .login-form .form-group {
+    margin-bottom: 20px;
+}
+
+.login-page .login-form .form-group .input-group {
+    background: #ffffff; /* 白色输入框背景 */
+    border: 1px solid #ccc; /* 浅灰色边框 */
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-page .login-form .form-group .input-group:hover {
+    border-color: #4c8bf5; /* 增强悬停效果 */
+    box-shadow: 0 0 8px rgba(76, 139, 245, 0.2); /* 添加悬停阴影 */
+}
+
+.login-page .login-form .form-group .input-group .input-group-addon {
+    background: transparent;
+    color: #4c8bf5; /* 图标颜色 */
+    border: none;
+}
+
+.login-page .login-form .form-group .input-group .form-control {
+    background: transparent;
+    border: none;
+    color: #333; /* 深色字体 */
+}
+
+.login-page .login-form .form-group .btn-login {
+    background: #4c8bf5; /* 主按钮颜色 */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-page .login-form .form-group .btn-login:hover {
+    background: #357ae8; /* 按钮悬停颜色 */
+    box-shadow: 0 4px 10px rgba(53, 122, 232, 0.2);
+}
+
+@media (max-width: 991px) {
+    .login-page .login-content {
+        width: 90%; /* 自适应宽度 */
+        padding: 20px;
+    }
+}
+
+@media (max-width: 350px) {
+    .login-page .login-content {
+        width: 100%;
+    }
+}

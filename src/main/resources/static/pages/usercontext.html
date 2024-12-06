@@ -1,0 +1,279 @@
+<section class="content">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 ">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">消费支出情况</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                                class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="chart-responsive">
+                                <canvas id="pieChart" height="150"></canvas>
+                            </div>
+                            <!-- ./chart-responsive -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <ul class="chart-legend clearfix">
+                                <li><i class="far fa-circle text-danger"></i> 饮食</li>
+                                <li><i class="far fa-circle text-success"></i> 服饰美容</li>
+                                <li><i class="far fa-circle text-warning"></i> 生活日用</li>
+                                <li><i class="far fa-circle text-info"></i> 文教娱乐</li>
+                                <li><i class="far fa-circle text-primary"></i> 交通出行</li>
+                                <li><i class="far fa-circle text-yellow"></i> 住房缴费</li>
+                                <li><i class="far fa-circle text-red"></i> 通讯物流</li>
+                                <li><i class="far fa-circle text-pink"></i> 运动健康</li>
+                                <li><i class="far fa-circle text-break"></i> 其他消费</li>
+                            </ul>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer bg-white p-0">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                消费最高支出项
+                                <span class="float-right text-danger" id="maxPrice">
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                消费最低支出项
+                                <span class="float-right text-success" id="minPrice">
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.footer -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <div class="col-md-6 col-sm-6 ">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">用户个人预算情况</h1>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                                class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0"  id="expTable">
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">每月总结报告</h5>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="text-center">
+                                <strong>2020年--支出，收入情况</strong>
+                            </p>
+
+                            <div class="chart">
+                                <!-- Sales Chart Canvas -->
+                                <canvas id="salesChart" height="180" style="height: 250px;"></canvas>
+                            </div>
+                            <!-- /.chart-responsive -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <p class="text-center">
+                                <strong>信息描述</strong>
+                            </p>
+
+                            <div class="progress-group">
+                                收入数据
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar bg-green" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+
+                            <div class="progress-group">
+                                支出数据
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar bg-blue" style="width: 100%"></div>
+                                </div>
+                            </div>
+
+                            <!-- /.progress-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- ./card-body -->
+                <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+</section>
+<!-- 支出添加页面 -->
+<div class="modal fade" id="addIncomeModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">收入记账</h4>
+            </div>
+            <form id="addForm">
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="incomeTypeId" class="col-sm-3 control-label">收入类型:<font color="red">*</font></label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="incomeTypeId" name="incomeTypeId">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="incomePrice" class="col-sm-3 control-label">收入金额:<font color="red">*</font></label>
+                            <div class="input-group col-sm-9">
+                                <input class="form-control" id="incomePrice" name="incomePrice" type="text">
+                                <span class="input-group-addon">.00</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="payMethod" class="col-sm-3 control-label">收款方式:<font color="red">*</font></label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="payMethod" name="payMethod">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="incomeSource" class="col-sm-3 control-label">收入来源:<font color="red">*</font></label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="incomeSource" name="incomeSource" type="text" placeholder="即：父亲，上司，公司，朋友">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="payAccount" class="col-sm-3 control-label">收入账户:<font color="red">*</font></label>
+                            <div class="input-group col-sm-9">
+                                <input class="form-control" id="payAccount" name="payAccount" type="text">
+                                <span class="input-group-addon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="incomeDesc" class="col-sm-3 control-label">收入描述:<font color="red">*</font></label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="incomeDesc" name="incomeDesc" rows="6" cols="60"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="center-block">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" id="addSaveBtn" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 收入添加页面 -->
+<div class="modal fade" id="addExpendModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">支出记账</h4>
+            </div>
+            <form id="addExpendForm">
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="expendTypeId" class="col-sm-3 control-label">支出类型:<font color="red">*</font></label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="expendTypeId" name="expendTypeId">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="expendPrice" class="col-sm-3 control-label">支出金额:<font color="red">*</font></label>
+                            <div class="input-group col-sm-9">
+                                <input class="form-control" id="expendPrice" name="expendPrice" type="text">
+                                <span class="input-group-addon">.00</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="payMethod" class="col-sm-3 control-label">支出方式:<font color="red">*</font></label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="payExpMethod" name="payMethod">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="expendUse" class="col-sm-3 control-label">支出用途:<font color="red">*</font></label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="expendUse" name="expendUse" type="text" placeholder="即：父亲，上司，公司，朋友">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="payAccount" class="col-sm-3 control-label">支出账户:<font color="red">*</font></label>
+                            <div class="input-group col-sm-9">
+                                <input class="form-control" id="payAccount" name="payAccount" type="text">
+                                <span class="input-group-addon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="expendDesc" class="col-sm-3 control-label">支出描述:<font color="red">*</font></label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="expendDesc" name="expendDesc" rows="6" cols="60"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="center-block">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" id="addExpSaveBtn" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/js/toastr.min.js"></script>
+<script src="/js/context/usercontext.js"></script>
